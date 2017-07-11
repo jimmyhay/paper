@@ -7,15 +7,15 @@ myTriangle.fillColor = '#00BA1C';*/
 
 //var canvas = document.getElementById('canvas'), 
 //context = canvas.getContext('2d');
-
+var canvas;
 var circles = [];
 
-function onMouseMove(event) {
-	//console.log("EH");
+$(document).mousemove(function(event) {
+	console.log("EH");
 	//myCircle.x = mouseX;
 	//myCircle.y = mouseY;
 	//myCircle.position = event.point;
-	var circle = new Path.Circle(new Point(event.point.x, event.point.y), 30);
+	var circle = new paper.Path.Circle(new paper.Point(event.pageX, event.pageY), 30);
 	
 	circle.fillColor = '#76D9FF';
 
@@ -27,10 +27,20 @@ function onMouseMove(event) {
 	}
 
 	//myCircle.exclude(mySquare);
-}
+});
 
-function onMouseDrag(event) {
-	//var radius = event.delta.length*10;
-	//var circle = new Path.Circle(event.middlePoint, radius);
-	//circle.fillColor = '#76D9FF';
-}
+$( document ).ready(function() {
+    console.log( "ready!" );
+
+    canvas = document.getElementById('myCanvas');
+
+    canvas.width = document.body.clientWidth; //document.width is obsolete
+    canvas.height = document.body.clientHeight; //document.height is obsolete
+    canvasW = canvas.width;
+    canvasH = canvas.height;
+
+	// Create an empty project and a view for the canvas:
+	paper.setup(canvas);
+	// Create a Paper.js Path to draw a line into it:
+	var path = new paper.Path();
+});
