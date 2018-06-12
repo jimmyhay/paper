@@ -1,2 +1,0 @@
-# paper
-Paper.js lab
